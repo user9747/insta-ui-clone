@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram</title>
-    <link rel="icon" type="image/png" href="favicon.png"/>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -19,9 +20,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 
 <body>
@@ -40,7 +41,7 @@
         <img src="images/loading.gif" alt="">
     </div>
     <!-- Feed  -->
-    <div class="feed"  id="feed">
+    <div class="feed" id="feed">
 
         <div id="app-4">
             <div v-for="(post,index) in posts">
@@ -151,17 +152,17 @@
 
     <nav class="navbar navbar-expand fixed-bottom custom-footer">
         <div class="container">
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul id="menu-main-nav" class="navbar-nav nav-fill w-100">     
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul id="menu-main-nav" class="navbar-nav nav-fill w-100">
 
-              <li  class="nav-item menu-item"><i class="fa fa-home" aria-hidden="true"></i></li>
-              <li  class="nav-item menu-item "><i class="fa fa-search" aria-hidden="true"></i></li>
-              <li class="nav-item menu-item "><i class="fa fa-plus-square-o" aria-hidden="true"></i></li>
-              <li class="nav-item menu-item "><i class="fa fa-heart-o" aria-hidden="true"></i></li>
-            </ul>
-          </div>
+                    <li class="nav-item menu-item"><i class="fa fa-home" aria-hidden="true"></i></li>
+                    <li class="nav-item menu-item "><i class="fa fa-search" aria-hidden="true"></i></li>
+                    <li class="nav-item menu-item "><i class="fa fa-plus-square-o" aria-hidden="true"></i></li>
+                    <li class="nav-item menu-item "><i class="fa fa-heart-o" aria-hidden="true"></i></li>
+                </ul>
+            </div>
         </div>
-      </nav>
+    </nav>
 </body>
 <script src="main.js"></script>
 
