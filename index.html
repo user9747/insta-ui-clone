@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-light fixed-top custom-nav">
+        <a class="navbar-brand" href="https://instagram.com">
+            <img src="images/camera.png" height="30" class="custom-brand">
+            <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" height="30"
+                class="custom-brand">
+        </a>
+        <img src="images/message.png" height="30" class="navbar-right">
+    </nav>
+
+    <div class="center" id="loading">
+        <img src="images/loading.gif" alt="">
+    </div>
+    <!-- Feed  -->
+    <div class="feed"  id="feed">
+
+        <div id="app-4">
+            <div v-for="(post,index) in posts">
+
+
+                <!-- Feed item -->
+                <div class="feed-item" v-bind:id="post['id']">
+                    <!-- Profile Icon-->
+                    <div class="profile-item" style="position: relative;">
+                        <img class="img-circle" src="images/profile.png" alt="User Image" height="30">
+                        <span class="username">
+
+                            varun.aditya
+
+                        </span>
+                        <i class="fa fa-ellipsis-v fa-1x" style="position: absolute;right: 5%;" aria-hidden="true"></i>
+                    </div>
+                    <!-- image -->
+                    <div>
+                        <img class="feed-img" v-bind:src="post['high thumbnail']" alt="">
+                    </div>
+                    <!-- User Options -->
+                    <div class="options" style="position: relative;">
+                        <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
+                        <i class="fa fa-comment-o fa-2x" aria-hidden="true"></i>
+                        <i class="fa fa-paper-plane-o fa-2x" aria-hidden="true"></i>
+                        <i v-if="post['like'] == 'notliked'" v-on:click="like(index)" class="fa fa-bookmark-o fa-2x"
+                            aria-hidden="true" style="position: absolute;right: 5%;"></i>
+                        <i v-if="post['like'] == 'liked'" v-on:click="dislike(index)" class="fa fa-bookmark fa-2x liked"
+                            aria-hidden="true" style="position: absolute;right: 5%;"></i>
+                    </div>
+
+                    <!-- Liked By -->
+                    <div class="like-item" style="position: relative;height: 25px;">
+                        <img class="img-circle" src="images/profile.png" alt="User Image" height="20"
+                            style="position: absolute;left: 5%;">
+                        <img class="img-circle" src="images/profile2.png" alt="User Image" height="20"
+                            style="position: absolute;left: 6.2%;">
+                        <img class="img-circle" src="images/profile3.png" alt="User Image" height="20"
+                            style="position: absolute;left: 7.4%;">
+                        <div style="position: absolute;left: 13%;">Liked by <b>neeharika_boda</b> and <b>60 others</b>
+                        </div>
+                    </div>
+
+                    <!-- Caption -->
+                    <div class="caption" style="position: relative;">
+                        <div v-if="post['title'].length > 50">
+                            <p v-if="post['readmore'] == 'false'" v-on:click="readmore(index)" aria-hidden="true">
+                                <b>varun.aditya</b> {{post['title'].slice(0,50)}} <i class="more">..more</i> </p>
+                            <p v-if="post['readmore'] == 'true'" v-on:click="readless(index)" aria-hidden="true">
+                                <b>varun.aditya</b> {{post['title']}} <i class="more">less</i> </p>
+                        </div>
+                        <div v-else>
+                            <p aria-hidden="true"><b>varun.aditya</b> {{post['title']}} </p>
+                        </div>
+
+                    </div>
+
+                    <div class="comments" id="modalActivate" data-toggle="modal" data-target="#exampleModalPreview">
+                        View all comments
+                    </div>
+
+
+
+
+
+                </div>
+                <!-- Feed item end -->
+            </div>
+        </div>
+
+    </div>
+    <!-- Feed end -->
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade right" id="exampleModalPreview" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+        <div class="modal-dialog-full-width modal-dialog momodel modal-fluid" role="document">
+            <div class="modal-content-full-width modal-content ">
+                <div class=" modal-header-full-width   modal-header  text-center">
+                    <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    </button>
+                    <p class="w-100">Comments</p>
+                </div>
+                <div class="modal-body">
+                    <div id="app-5">
+                        <div v-for="(comment,index) in comments">
+                            <div class="comment-item">
+                                <img class="img-circle" src="images/profile.png" alt="User Image" height="35">
+                                <span>
+                                    <b>{{comment['username']}}</b>
+                                </span>
+                                {{ comment['comments']}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <nav class="navbar navbar-expand fixed-bottom custom-footer">
+        <div class="container">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul id="menu-main-nav" class="navbar-nav nav-fill w-100">     
+
+              <li  class="nav-item menu-item"><i class="fa fa-home" aria-hidden="true"></i></li>
+              <li  class="nav-item menu-item "><i class="fa fa-search" aria-hidden="true"></i></li>
+              <li class="nav-item menu-item "><i class="fa fa-plus-square-o" aria-hidden="true"></i></li>
+              <li class="nav-item menu-item "><i class="fa fa-heart-o" aria-hidden="true"></i></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+</body>
+<script src="main.js"></script>
+
+</html>

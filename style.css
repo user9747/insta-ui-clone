@@ -1,0 +1,97 @@
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    background-color: white;
+    padding-top:70px ;
+}
+.custom-nav{
+    background-color: #fafafa;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.custom-brand{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.feed-item{
+    padding-top: 2%;
+}
+.profile-item{
+    padding-bottom: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.feed-img{
+    width:100%
+}
+
+.options{
+    padding-right: 5%;
+    padding-left: 5% ;
+    padding-top: 1%;
+}
+
+.options i{
+    padding-right: 1%;
+}
+
+.like-item{
+    padding-top: 2%;
+}
+.caption{
+    padding-top: 2%;
+    padding-left: 5%;
+}
+
+.more{
+    color: #8e8e8e;
+}
+
+.comments{
+    color: #8e8e8e;
+    padding-left: 5%;
+    cursor: pointer;
+    padding-bottom: 5%;
+}
+
+
+.modal-dialog-full-width {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width:none !important;
+
+}
+
+.modal-content-full-width  {
+    height: auto !important;
+    min-height: 100% !important;
+    border-radius: 0 !important;
+    background-color: white !important 
+}
+
+.liked{
+    color: red !important;
+}
+.comment-item{
+    font-size: 1rem;
+    padding: 2%;
+}
+
+.center img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+  }
+
+  .custom-footer{
+    background-color: #fafafa;
+    border-top: 1px solid #dbdbdb;
+}
